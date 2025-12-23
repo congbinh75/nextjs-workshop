@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import Layout from "./layout";
+import Layout from "../layout";
 
 const Contact = () => {
   return (
