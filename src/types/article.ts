@@ -1,10 +1,12 @@
+export type ImageData = {
+  src: string;
+  alt: string;
+};
+
 export type Article = {
   id: number;
-  image: {
-    src: string | null | undefined;
-    alt: string | null | undefined;
-  };
+  image: ImageData;
   categories: string[];
-  title: string | null | undefined;
-  excerpt: string | null | undefined;
-}
+  title: string;
+  excerpt: string;
+};

@@ -1,8 +1,14 @@
-import Link from "next/link";
-import Image from "next/image";
 import { Article } from "@/types/article";
+import Image from "next/image";
+import Link from "next/link";
 
-export const ArticleCard = ({ id, image, categories, title, excerpt }: Article) => {
+export const ArticleCard = ({
+  id,
+  image,
+  categories,
+  title,
+  excerpt,
+}: Article) => {
   return (
     <article className="brick entry animate-this">
       <div className="entry-thumb">
@@ -21,7 +27,10 @@ export const ArticleCard = ({ id, image, categories, title, excerpt }: Article) 
           <div className="entry-meta">
             <span className="cat-links">
               {categories.map((category) => (
-                <Link key={category} href={``}>
+                <Link
+                  key={category}
+                  href={`/categories/${category.toLowerCase()}`}
+                >
                   {category}
                 </Link>
               ))}
@@ -29,7 +38,9 @@ export const ArticleCard = ({ id, image, categories, title, excerpt }: Article) 
           </div>
 
           <h1 className="entry-title">
-            <Link className="font-bold" href={`/posts/${id}`}>{title}</Link>
+            <Link className="font-bold" href={`/posts/${id}`}>
+              {title}
+            </Link>
           </h1>
         </div>
         <div className="entry-excerpt">{excerpt}</div>

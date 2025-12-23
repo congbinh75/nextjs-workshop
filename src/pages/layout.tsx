@@ -1,10 +1,14 @@
 import Head from "next/head";
-import Script from "next/script";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const router = useRouter();
+  const pathName = router.pathname;
+
   return (
     <>
       <Head>
@@ -30,69 +34,17 @@ export default function Layout({
 
           <nav id="main-nav-wrap">
             <ul className="main-navigation sf-menu">
-              <li className="current">
-                <a href="index.html" title="">
-                  Home
-                </a>
+              <li className={pathName === "/dashboard" ? "current" : ""}>
+                <Link href="/dashboard">Home</Link>
               </li>
-              <li className="has-children">
-                <a href="category.html" title="">
-                  Categories
-                </a>
-                <ul className="sub-menu">
-                  <li>
-                    <a href="category.html">Wordpress</a>
-                  </li>
-                  <li>
-                    <a href="category.html">HTML</a>
-                  </li>
-                  <li>
-                    <a href="category.html">Photography</a>
-                  </li>
-                  <li>
-                    <a href="category.html">UI</a>
-                  </li>
-                  <li>
-                    <a href="category.html">Mockups</a>
-                  </li>
-                  <li>
-                    <a href="category.html">Branding</a>
-                  </li>
-                </ul>
+              <li className={pathName.includes("/categories") ? "current" : ""}>
+                <Link href="/categories">Categories</Link>
               </li>
-              <li className="has-children">
-                <a href="single-standard.html" title="">
-                  Blog
-                </a>
-                <ul className="sub-menu">
-                  <li>
-                    <a href="single-video.html">Video Post</a>
-                  </li>
-                  <li>
-                    <a href="single-audio.html">Audio Post</a>
-                  </li>
-                  <li>
-                    <a href="single-gallery.html">Gallery Post</a>
-                  </li>
-                  <li>
-                    <a href="single-standard.html">Standard Post</a>
-                  </li>
-                </ul>
+              <li className={pathName.includes("/blog") ? "current" : ""}>
+                <Link href="/blog">Blog</Link>
               </li>
-              <li>
-                <a href="style-guide.html" title="">
-                  Styles
-                </a>
-              </li>
-              <li>
-                <a href="about.html" title="">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="contact.html" title="">
-                  Contact
-                </a>
+              <li className={pathName.includes("/contact") ? "current" : ""}>
+                <Link href="/contact">Contact</Link>
               </li>
             </ul>
           </nav>
@@ -134,104 +86,6 @@ export default function Layout({
         <div className="row masonry">
           <div className="bricks-wrapper">
             <div className="grid-sizer"></div>
-
-            <div className="brick entry featured-grid animate-this">
-              <div className="entry-content">
-                <div id="featured-post-slider" className="flexslider">
-                  <ul className="slides">
-                    <li>
-                      <div className="featured-post-slide">
-                        <div
-                          className="post-background"
-                          style={{
-                            backgroundImage:
-                              "url('images/thumbs/featured/featured-1.jpg')",
-                          }}
-                        ></div>
-
-                        <div className="overlay"></div>
-
-                        <div className="post-content">
-                          <ul className="entry-meta">
-                            <li>September 06, 2016</li>
-                            <li>
-                              <Link href="#">Naruto Uzumaki</Link>
-                            </li>
-                          </ul>
-
-                          <h1 className="slide-title">
-                            <a href="single-standard.html" title="">
-                              Minimalism Never Goes Out of Style
-                            </a>
-                          </h1>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="featured-post-slide">
-                        <div
-                          className="post-background"
-                          style={{
-                            backgroundImage:
-                              "url('images/thumbs/featured/featured-2.jpg')",
-                          }}
-                        ></div>
-
-                        <div className="overlay"></div>
-
-                        <div className="post-content">
-                          <ul className="entry-meta">
-                            <li>August 29, 2016</li>
-                            <li>
-                              <Link href="#">Sasuke Uchiha</Link>
-                            </li>
-                          </ul>
-
-                          <h1 className="slide-title">
-                            <a href="single-standard.html" title="">
-                              Enhancing Your Designs with Negative Space
-                            </a>
-                          </h1>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li>
-                      <div className="featured-post-slide">
-                        <div
-                          className="post-background"
-                          style={{
-                            backgroundImage:
-                              "url('images/thumbs/featured/featured-3.jpg')",
-                          }}
-                        ></div>
-
-                        <div className="overlay"></div>
-
-                        <div className="post-content">
-                          <ul className="entry-meta">
-                            <li>August 27, 2016</li>
-                            <li>
-                              <Link href="#" className="author">
-                                Naruto Uzumaki
-                              </Link>
-                            </li>
-                          </ul>
-
-                          <h1 className="slide-title">
-                            <Link href="single-standard.html" title="">
-                              Music Album Cover Designs for Inspiration
-                            </Link>
-                          </h1>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
             {children}
           </div>
         </div>
@@ -376,15 +230,8 @@ export default function Layout({
       </footer>
 
       {/* <div id="preloader">
-          <div id="loader"></div>
-        </div> */}
-
-      <Script src="js/jquery-2.1.3.min.js"></Script>
-      <Script src="js/plugins.js"></Script>
-      <Script src="js/jquery.appear.js"></Script>
-      <Script src="js/main.js"></Script>
-      <Script src="js/modernizr.js"></Script>
-      <Script src="js/pace.min.js"></Script>
+        <div id="loader"></div>
+      </div> */}
     </>
   );
 }
