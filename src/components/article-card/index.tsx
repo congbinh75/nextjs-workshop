@@ -1,4 +1,4 @@
-import { Article } from "@/types/article";
+import { ArticleCardContent } from "@/types/article";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,11 +8,11 @@ export const ArticleCard = ({
   categories,
   title,
   excerpt,
-}: Article) => {
+}: ArticleCardContent) => {
   return (
     <article className="brick entry animate-this">
       <div className="entry-thumb">
-        <Link href={`/posts/${id}`} className="thumb-link">
+        <Link href={`/blog/${id}`} className="thumb-link">
           <Image
             src={image.src || "/images/sample-image.jpg"}
             alt={image.alt || "Pattern"}
@@ -38,7 +38,7 @@ export const ArticleCard = ({
           </div>
 
           <h1 className="entry-title">
-            <Link className="font-bold" href={`/posts/${id}`}>
+            <Link className="font-bold" href={`/blog/${id}`}>
               {title}
             </Link>
           </h1>

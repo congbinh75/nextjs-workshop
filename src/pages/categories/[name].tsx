@@ -1,13 +1,14 @@
 import { getArticlesByCategory } from "@/api/articles";
 import { ArticleCard } from "@/components/article-card";
-import { Article } from "@/types/article";
+import { ArticleCardContent } from "@/types/article";
 import { GetServerSidePropsContext } from "next";
 import { ReactElement } from "react";
 import Layout from "../layout";
 
 interface CategoryProps {
-  articles: Article[];
+  articles: ArticleCardContent[];
 }
+
 const Category = ({ articles }: Readonly<CategoryProps>) => {
   return (
     <>

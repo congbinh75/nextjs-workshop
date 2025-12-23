@@ -1,11 +1,11 @@
 import { getAllArticlesAsync } from "@/api/articles";
 import { ArticleCard } from "@/components/article-card";
-import { Article } from "@/types/article";
-import Layout from "../layout";
+import { ArticleCardContent } from "@/types/article";
 import { ReactElement } from "react";
+import Layout from "../layout";
 
 interface DashboardProps {
-  articles: Article[];
+  articles: ArticleCardContent[];
 }
 
 export default function Dashboard({ articles }: Readonly<DashboardProps>) {
