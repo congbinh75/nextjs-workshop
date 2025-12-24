@@ -1,40 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# NextJS Demo
+A simple React application built for NextJS Fundamentals course.
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm install
+```
+
+```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Features
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### Dashboard
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Route: `/` or `/dashboard`
 
-## Learn More
+Show a grid of available articles.
 
-To learn more about Next.js, take a look at the following resources:
+### Categories
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+Route: `/categories/[name]`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Show a grid of articles belong to certain category.
 
-## Deploy on Vercel
+Can be accessed by clicking category name on article cards.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Article/Blog
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Route: `/blog/[id]`
+
+Display content of an article/blog.
+
+### Contact
+
+Route: `/contact`
+
+Show contact information.
+
+Can be accessed via navbar.
+
+### Login
+
+Route `/login`
+
+Show login form.
+
+Can be accessed via navbar.
+
+Default users:
+- Email: `johndoe@mail.com`; Password: `johndoe123`
+- Email: `janedoe@mail.com`; Password: `janedoe123`
+
+### Admin
+
+Route `/route`
+
+Show a list of messages left by visitors in Contact page.
+
+Can be accessed after logging in successfully.
