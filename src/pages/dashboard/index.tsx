@@ -1,14 +1,20 @@
 import { getAllArticlesAsync } from "@/api/articles";
 import { ArticleCard } from "@/components/article-card";
 import { ArticleCardContent } from "@/types/article";
+import { PaginationModel } from "@/types/pagination";
 import { ReactElement } from "react";
 import Layout from "../layout";
+import Pagination from "@/components/pagination";
 
 interface DashboardProps {
   articles: ArticleCardContent[];
+  pagination: PaginationModel;
 }
 
-export default function Dashboard({ articles }: Readonly<DashboardProps>) {
+export default function Dashboard({
+  articles,
+  pagination,
+}: Readonly<DashboardProps>) {
   return (
     <section id="bricks">
       <div className="row masonry">
@@ -20,24 +26,18 @@ export default function Dashboard({ articles }: Readonly<DashboardProps>) {
         </div>
       </div>
 
-      <div className="row">
-        <nav className="pagination">
-          <span className="page-numbers prev inactive">Prev</span>
-          <span className="page-numbers current">1</span>
-          <a href="#" className="page-numbers next">
-            Next
-          </a>
-        </nav>
-      </div>
+      <Pagination pagination={pagination} />
     </section>
   );
 }
 
 export async function getServerSideProps() {
-  const articles = await getAllArticlesAsync();
+  const result = await getAllArticlesAsync();
+  const articles = result.articles;
+  const pagination = result.pagination;
 
   return {
-    props: { articles },
+    props: { articles, pagination },
   };
 }
 

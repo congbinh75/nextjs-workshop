@@ -800,5 +800,11 @@
         }
       ]
     }
-  ]
+  ],
+  "pagination": {
+    "page": 1,
+    "pageSize": 8,
+    "totalItems": 8,
+    "totalPage": 1
+  }
 }

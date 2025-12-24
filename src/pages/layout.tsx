@@ -28,7 +28,7 @@ export default function Layout({
 
         <div className="row header-content">
           <div className="logo">
-            <a href="index.html">Author</a>
+            <Link href="/dashboard">Author</Link>
           </div>
 
           <nav id="main-nav-wrap">
@@ -39,39 +39,11 @@ export default function Layout({
               <li className={pathName.includes("/contact") ? "current" : ""}>
                 <Link href="/contact">Contact</Link>
               </li>
+              <li className={pathName.includes("/login") ? "current" : ""}>
+                <Link href="/login">Login</Link>
+              </li>
             </ul>
           </nav>
-
-          <div className="search-wrap">
-            <form role="search" method="get" className="search-form" action="#">
-              <label>
-                <span className="hide-content">Search for:</span>
-                <input
-                  type="search"
-                  className="search-field"
-                  placeholder="Type Your Keywords"
-                  value=""
-                  name="s"
-                  title="Search for:"
-                  autoComplete="off"
-                />
-              </label>
-              <input type="submit" className="search-submit" value="Search" />
-            </form>
-
-            <Link href="#" id="close-search" className="close-btn">
-              Close
-            </Link>
-          </div>
-
-          <div className="triggers">
-            <Link className="search-trigger" href="#">
-              <i className="fa fa-search"></i>
-            </Link>
-            <Link className="menu-toggle" href="#">
-              <span>Menu</span>
-            </Link>
-          </div>
         </div>
       </header>
 

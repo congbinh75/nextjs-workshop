@@ -1,8 +1,12 @@
 import { Article, ArticleCardContent } from "@/types/article";
 import path from "node:path";
 import fs from "node:fs";
+import { PaginationModel } from "@/types/pagination";
 
-export const getAllArticlesAsync = async (): Promise<ArticleCardContent[]> => {
+export const getAllArticlesAsync = async (): Promise<{
+  articles: ArticleCardContent[];
+  pagination: PaginationModel;
+}> => {
   const filePath = path.join(
     process.cwd(),
     "public",
@@ -11,12 +15,15 @@ export const getAllArticlesAsync = async (): Promise<ArticleCardContent[]> => {
   );
   const jsonData = fs.readFileSync(filePath, "utf-8");
   const data = JSON.parse(jsonData);
-  return data.articles as ArticleCardContent[];
+  return {
+    articles: data.articles as ArticleCardContent[],
+    pagination: data.pagination,
+  };
 };
 
 export const getArticlesByCategory = async (
   category: string
-): Promise<ArticleCardContent[]> => {
+): Promise<{ articles: ArticleCardContent[]; pagination: PaginationModel }> => {
   const filePath = path.join(
     process.cwd(),
     "public",
@@ -32,16 +39,14 @@ export const getArticlesByCategory = async (
       })
       .includes(category.toLowerCase())
   );
-  return filteredData as ArticleCardContent[];
+  return {
+    articles: filteredData as ArticleCardContent[],
+    pagination: data.pagination,
+  };
 };
 
 export const getArticleByIdAsync = async (id: number) => {
-  const filePath = path.join(
-    process.cwd(),
-    "public",
-    "data",
-    "articles.json"
-  );
+  const filePath = path.join(process.cwd(), "public", "data", "articles.json");
   const jsonData = fs.readFileSync(filePath, "utf-8");
   const data = JSON.parse(jsonData);
   console.log(data.articles);

@@ -116,6 +116,10 @@ const Contact = () => {
   );
 };
 
+export async function getStaticProps() {
+  return { props: {} };
+}
+
 Contact.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
